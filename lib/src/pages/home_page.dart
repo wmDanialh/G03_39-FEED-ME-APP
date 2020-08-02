@@ -3,7 +3,6 @@ import 'package:feedmeapp1/src/widgets/food_category.dart';
 import 'package:flutter/material.dart';
 import 'package:feedmeapp1/src/widgets/home_top_info.dart';
 import 'package:feedmeapp1/src/widgets/search_field.dart';
-
 import 'package:feedmeapp1/src/data/food_data.dart';
 import 'package:feedmeapp1/src/models/food_model.dart';
 
@@ -70,10 +69,8 @@ class _HomePageState extends State<HomePage>{
         category: food.category,
         discount: food.discount,
         price: food.price,
-        rating: food.ratings,
       ),
     );
   }
 
 }
-

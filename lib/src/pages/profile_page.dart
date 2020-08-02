@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:feedmeapp1/src/widgets/custom_list_tile.dart';
+import 'package:feedmeapp1/src/widgets/small_button.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -15,7 +17,7 @@ class _ProfilePageState extends State<ProfilePage> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          padding: EdgeInsets.symmetric(horizontal: 20.0,vertical: 50.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -74,6 +76,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       SizedBox(
                         height: 20.0,
                       ),
+                      SmallButton(btnText: "Edit"),
                     ],
                   ),
                 ],
@@ -97,6 +100,34 @@ class _ProfilePageState extends State<ProfilePage> {
                   padding: EdgeInsets.all(16.0),
                   child: Column(
                     children: <Widget>[
+                      CustomListTile(
+                        icon: Icons.location_on,
+                        text: "Location",
+                      ),
+                      Divider(
+                        height: 10.0,
+                        color: Colors.grey,
+                      ),
+                      CustomListTile(
+                        icon: Icons.visibility,
+                        text: "Change Password",
+                      ),
+                      Divider(
+                        height: 10.0,
+                        color: Colors.grey,
+                      ),
+                      CustomListTile(
+                        icon: Icons.shopping_cart,
+                        text: "Shipping",
+                      ),
+                      Divider(
+                        height: 10.0,
+                        color: Colors.grey,
+                      ),
+                      CustomListTile(
+                        icon: Icons.payment,
+                        text: "Payment",
+                      ),
                       Divider(
                         height: 10.0,
                         color: Colors.grey,

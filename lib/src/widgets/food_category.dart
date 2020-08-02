@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'food_card.dart';
 
 // DAta
-import 'package:feedmeapp1/src/data/category_data.dart';
+import '../data/category_data.dart';
 
 // Model
-import 'package:feedmeapp1/src/models/category_model.dart';
+import '../models/category_model.dart';
 
 class FoodCategory extends StatelessWidget{
 

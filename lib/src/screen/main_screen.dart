@@ -1,11 +1,16 @@
+import 'package:feedmeapp1/src/scoped-model/food_model.dart';
 import 'package:flutter/material.dart';
-
 import 'package:feedmeapp1/src/pages/home_page.dart';
 import 'package:feedmeapp1/src/pages/order_page.dart';
 import 'package:feedmeapp1/src/pages/profile_page.dart';
 import 'package:feedmeapp1/src/pages/favourite_page.dart';
 
 class MainScreen extends StatefulWidget{
+
+  final FoodModel foodModel;
+
+  MainScreen({this.foodModel});
+
   @override
   _MainScreenState createState() => _MainScreenState();
   }
@@ -24,15 +29,18 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
-    super.initState();
+
+    //call the fetch method on food
+    widget.foodModel.fetchFoods();
+
     homePage = HomePage();
-    orderPage = OrderPage();
     favouritePage = FavouritePage();
+    orderPage = OrderPage();
     profilePage = ProfilePage();
-    pages = [homePage,orderPage,favouritePage,profilePage];
+    pages = [homePage,favouritePage,orderPage,profilePage];
 
     currentPage = homePage;
+    super.initState();
   }
 
   @override
@@ -53,12 +61,12 @@ class _MainScreenState extends State<MainScreen> {
            title: Text("Home")
          ),
          BottomNavigationBarItem(
-           icon: Icon(Icons.shopping_cart),
-           title: Text("Orders")
+             icon: Icon(Icons.explore),
+             title: Text("Explore")
          ),
          BottomNavigationBarItem(
-             icon: Icon(Icons.favorite),
-             title: Text("Favourite")
+           icon: Icon(Icons.shopping_cart),
+           title: Text("Orders")
          ),
          BottomNavigationBarItem(
              icon: Icon(Icons.person),
@@ -67,13 +75,12 @@ class _MainScreenState extends State<MainScreen> {
        ],
      ),
      body: currentPage,
-     appBar: currentTabIndex == 1?AppBar(
-    title: Text("Your food cart", style: TextStyle(color: Colors.black),),
-    centerTitle: true,
-    backgroundColor: Colors.white,
-    elevation: 0.0,
+    // appBar: currentTabIndex == 1?AppBar(
+    //title: Text("Your food cart", style: TextStyle(color: Colors.black),),
+    //centerTitle: true,
+    //backgroundColor: Colors.white,
+    //elevation: 0.0,
 
-     ):null
    );
   }
 }
