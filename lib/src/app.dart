@@ -1,5 +1,7 @@
+import 'package:feedmeapp1/src/pages/home_page.dart';
+import 'package:feedmeapp1/src/screen/main_screen.dart';
 import 'package:flutter/material.dart';
-import 'homescreen.dart';
+
 
 class App extends StatelessWidget{
   @override
@@ -10,7 +12,7 @@ class App extends StatelessWidget{
       theme: ThemeData(
           primaryColor: Colors.blueAccent
       ),
-      home: HomeScreen(),
+      home: MainScreen(),
     );
 
   }
