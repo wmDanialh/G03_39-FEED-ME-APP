@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorWhite"
+    tools:context=".UserFragment.ProfileFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:fontFamily="@font/baloo_thambi"
+            android:textColor="#000"
+            android:textSize="35dp"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="100dp"
+            android:layout_marginTop="50dp"
+            android:layout_height="100dp"
+            android:src="@color/royalBlue"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"/>
+
+        <TextView
+            android:id="@+id/nameProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="40dp"
+            android:layout_toEndOf="@+id/profile_image"
+            android:fontFamily="@font/baloo_thambi"
+            android:gravity="top"
+            android:text="Danny Wyne"
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameProfile"
+            android:layout_marginStart="40dp"
+            android:id="@+id/numberProfile"
+            android:layout_marginTop="-35dp"
+            android:layout_toEndOf="@+id/profile_image"
+            android:gravity="center"
+            android:text="0139035513"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/outlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/royalBlue"
+            android:layout_below="@+id/numberProfile"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="40dp"
+            android:text="Edit Profile"
+            android:background="@color/colorWhite"
+            android:layout_toEndOf="@+id/profile_image"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Account"
+            android:id="@+id/accountext"
+            android:textSize="20dp"
+            android:fontFamily="@font/baloo_thambi"
+            android:textColor="#000"
+            android:layout_below="@id/profile_image"
+            android:layout_marginTop="30dp"/>
+
+        <RelativeLayout
+            android:id="@+id/secondrelative"
+            android:background="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/accountext">
+
+            <Button
+                android:layout_width="match_parent"
+                android:id="@+id/location"
+                android:text="Location"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_below="@id/location"
+                android:text="Change Password"
+                android:id="@+id/changePassword"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_below="@id/changePassword"
+                android:text="Shipping"
+                android:id="@+id/shipping"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/payment"
+                android:layout_below="@+id/shipping"
+                android:text="Payment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notifications"
+            android:id="@+id/notifications"
+            android:textSize="20dp"
+            android:fontFamily="@font/baloo_thambi"
+            android:textColor="#000"
+            android:layout_below="@id/secondrelative"
+            android:layout_marginTop="10dp"/>
+
+        <RelativeLayout
+            android:background="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:id="@+id/thirdrelative"
+            android:layout_height="match_parent"
+            android:layout_below="@id/notifications">
+
+            <Button
+                android:layout_width="match_parent"
+                android:id="@+id/appNotification"
+                android:text="App Notification"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_below="@id/appNotification"
+                android:text="Location Tracking"
+                android:id="@+id/locationtracking"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other"
+            android:id="@+id/other"
+            android:textSize="20dp"
+            android:fontFamily="@font/baloo_thambi"
+            android:textColor="#000"
+            android:layout_below="@id/thirdrelative"
+            android:layout_marginTop="10dp"/>
+
+        <RelativeLayout
+            android:background="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/other">
+
+            <Button
+                android:layout_width="match_parent"
+                android:id="@+id/language"
+                android:text="Language"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_below="@id/language"
+                android:text="Currency"
+                android:id="@+id/currency"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</ScrollView>

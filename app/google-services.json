@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "233813789295",
+    "firebase_url": "https://feedmeapp-java-version.firebaseio.com",
+    "project_id": "feedmeapp-java-version",
+    "storage_bucket": "feedmeapp-java-version.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:233813789295:android:cdd6bb1e50c1dc748e9b9a",
+        "android_client_info": {
+          "package_name": "com.example.feedmeappjava"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "233813789295-795m2tmtiepioib296qdl307mq86bddh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfGw88bj401wbAMZlq1cnfUgDKPuDeaX8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "233813789295-795m2tmtiepioib296qdl307mq86bddh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
