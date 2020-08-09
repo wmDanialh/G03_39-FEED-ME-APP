@@ -9,10 +9,12 @@
         android:roundIcon="@drawable/delivery"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".UserPasswordChange"></activity>
+        <activity android:name=".UserEditProfileActivity" />
         <activity
             android:name=".UserMainScreen"
             android:label="@string/title_activity_navigation_drawer"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".PasswordActivity" />
         <activity android:name=".AdminMainScreen" />
         <activity android:name=".SplashActivity">

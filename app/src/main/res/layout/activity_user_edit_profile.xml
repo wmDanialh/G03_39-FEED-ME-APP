@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserEditProfileActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        app:civ_border_overlay="true"
+        android:id="@+id/imgProfile"
+        app:civ_border_color="#000"
+        android:layout_marginBottom="20dp"
+        app:civ_border_width="1dp"/>
+
+    <EditText
+        android:id="@+id/editProfileName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgProfile"
+        android:drawablePadding="5dp"
+        android:background="@color/colorWhite"
+        android:padding="10dp"
+        android:hint="Full Name"
+        android:inputType="textPersonName|textCapWords"
+        android:drawableStart="@drawable/ic_person"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editProfileName"
+        android:drawablePadding="5dp"
+        android:background="@color/colorWhite"
+        android:padding="10dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:drawableStart="@drawable/ic_email"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/editMobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editEmail"
+        android:drawablePadding="5dp"
+        android:background="@color/colorWhite"
+        android:padding="10dp"
+        android:hint="Mobile Number"
+        android:inputType="number"
+        android:drawableStart="@drawable/ic_phone"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/editAddress"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@id/editMobile"
+        android:drawablePadding="5dp"
+        android:background="@color/colorWhite"
+        android:padding="10dp"
+        android:hint="Address"
+        android:inputType="textLongMessage"
+        android:drawableStart="@drawable/ic_baseline_location_on_24"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:background="@color/royalBlue"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
+        android:layout_below="@id/editAddress"
+        android:layout_marginLeft="100dp"
+        android:text="Save"
+        android:layout_marginTop="50dp"/>
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:background="@color/royalBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/editAddress"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="50dp"
+        android:text="Cancel"
+        android:layout_toRightOf="@id/btnSave"/>
+
+
+
+
+</RelativeLayout>

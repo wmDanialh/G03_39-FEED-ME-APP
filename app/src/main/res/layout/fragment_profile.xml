@@ -43,7 +43,7 @@
             android:layout_toEndOf="@+id/profile_image"
             android:fontFamily="@font/baloo_thambi"
             android:gravity="top"
-            android:text="Danny Wyne"
+            android:text="User Name"
             android:textColor="#000"
             android:textSize="20dp" />
 
@@ -56,19 +56,19 @@
             android:layout_marginTop="-35dp"
             android:layout_toEndOf="@+id/profile_image"
             android:gravity="center"
-            android:text="0139035513"
+            android:text="0123456789"
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/outlinedButton"
+            android:id="@+id/editProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/royalBlue"
             android:layout_below="@+id/numberProfile"
+            android:background="@android:color/transparent"
             android:layout_marginTop="0dp"
             android:layout_marginStart="40dp"
             android:text="Edit Profile"
-            android:background="@color/colorWhite"
             android:layout_toEndOf="@+id/profile_image"/>
 
         <TextView
@@ -89,20 +89,36 @@
             android:layout_height="match_parent"
             android:layout_below="@id/accountext">
 
+
             <Button
                 android:layout_width="match_parent"
                 android:id="@+id/location"
                 android:text="Location"
+                android:fontFamily="@font/basic"
+                android:layout_marginLeft="10dp"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
+                android:drawableStart="@drawable/ic_baseline_location_on_24"
                 android:layout_height="wrap_content"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_below="@id/location"
+                android:layout_marginLeft="10dp"
+                android:textColor="#000"
+                android:fontFamily="@font/basic"
+                android:drawableStart="@drawable/ic_lock"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
                 android:text="Change Password"
                 android:id="@+id/changePassword"
                 android:layout_height="wrap_content"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_below="@id/changePassword"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="10dp"
+                android:gravity="left|center_vertical"
+                android:drawableStart="@drawable/ic_baseline_motorcycle_24"
                 android:text="Shipping"
                 android:id="@+id/shipping"
                 android:layout_height="wrap_content"/>
@@ -111,6 +127,11 @@
                 android:layout_below="@+id/shipping"
                 android:text="Payment"
                 android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/basic"
+                android:drawableStart="@drawable/ic_baseline_credit_card_24"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
                 android:layout_height="wrap_content"/>
 
         </RelativeLayout>
@@ -133,16 +154,25 @@
             android:layout_height="match_parent"
             android:layout_below="@id/notifications">
 
-            <Button
+            <Switch
                 android:layout_width="match_parent"
                 android:id="@+id/appNotification"
-                android:text="App Notification"
+                android:text="APP NOTIFICATION"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/basic"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
                 android:layout_height="wrap_content"/>
-            <Button
+            <Switch
                 android:layout_width="match_parent"
                 android:layout_below="@id/appNotification"
-                android:text="Location Tracking"
+                android:text="LOCATION TRACKING"
                 android:id="@+id/locationtracking"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/basic"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
                 android:layout_height="wrap_content"/>
 
         </RelativeLayout>
@@ -159,6 +189,7 @@
             android:layout_marginTop="10dp"/>
 
         <RelativeLayout
+            android:id="@+id/below"
             android:background="@color/colorWhite"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -166,15 +197,54 @@
 
             <Button
                 android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
                 android:id="@+id/language"
+                android:fontFamily="@font/basic"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/ic_baseline_language_24"
+                android:gravity="left|center_vertical"
                 android:text="Language"
                 android:layout_height="wrap_content"/>
             <Button
                 android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
                 android:layout_below="@id/language"
                 android:text="Currency"
+                android:fontFamily="@font/basic"
                 android:id="@+id/currency"
+                android:drawableStart="@drawable/ic_baseline_attach_money_24"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
                 android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_below="@id/below"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="30dp"
+            android:id="@+id/separator"
+            android:background="#999999" />
+
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:background="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_below="@id/separator"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/logoutuser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B22222"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/baloo_thambi"
+                android:text="LOG OUT"/>
+
 
         </RelativeLayout>
 
