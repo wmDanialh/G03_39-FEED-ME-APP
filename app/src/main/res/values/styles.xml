@@ -26,4 +26,11 @@
 
     </style>
 
+    <style name="ToolBarStyle" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">@color/royalBlue</item>
+        <item name="android:textColorSecondary">@color/royalBlue</item>
+        <item name="actionMenuTextColor">@color/royalBlue</item>
+    </style>
+
+
 </resources>

@@ -3,17 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@android:drawable/screen_background_light_transparent"
     android:layout_height="match_parent"
     tools:context=".UserEditProfileActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarEditProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarEditProfile"
+            android:layout_width="match_parent"
+            app:theme="@style/ToolBarStyle"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorWhite"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgUserEditProfile"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@mipmap/ic_launcher"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
         app:civ_border_overlay="true"
-        android:id="@+id/imgProfile"
         app:civ_border_color="#000"
         android:layout_marginBottom="20dp"
         app:civ_border_width="1dp"/>
@@ -22,7 +39,7 @@
         android:id="@+id/editProfileName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imgProfile"
+        android:layout_below="@id/imgUserEditProfile"
         android:drawablePadding="5dp"
         android:background="@color/colorWhite"
         android:padding="10dp"
@@ -72,28 +89,15 @@
 
     <Button
         android:id="@+id/btnSave"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:background="@color/royalBlue"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:textColor="@color/colorWhite"
         android:layout_below="@id/editAddress"
         android:layout_marginLeft="100dp"
         android:text="Save"
         android:layout_marginTop="50dp"/>
-
-    <Button
-        android:id="@+id/btnCancel"
-        android:background="@color/royalBlue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorWhite"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/editAddress"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="50dp"
-        android:text="Cancel"
-        android:layout_toRightOf="@id/btnSave"/>
-
 
 
 

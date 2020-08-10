@@ -2,6 +2,7 @@ package com.example.feedmeappjava;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,6 +30,21 @@ public class UserPasswordChange extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_password_change);
+
+        Toolbar toolbar = findViewById(R.id.toolbarUserPassword);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Change Password");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //toolbar.setTitleTextColor(getResources().getColor(android.R.color.holo_red_dark));
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
 
         newPassword = findViewById(R.id.newPass);
         btnSavePass = findViewById(R.id.btnSavePass);
