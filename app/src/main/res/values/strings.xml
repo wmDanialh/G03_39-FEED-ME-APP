@@ -18,5 +18,7 @@
     <string name="bottom_explorer">Explorer</string>
     <string name="bottom_order">Order</string>
     <string name="bottom_profile">Profile</string>
+    <string name="title_activity_user_main">UserMainActivity</string>
+    <string name="title_activity_user_main2">UserMainActivity2</string>
 
 </resources>

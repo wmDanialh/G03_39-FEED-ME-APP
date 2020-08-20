@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.feedmeappjava">
 
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +12,14 @@
         android:roundIcon="@drawable/delivery"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserPasswordChange"></activity>
+        <activity android:name=".UserTermsAndConditions"></activity>
+        <activity android:name=".UserSettingsActivity" />
+        <activity android:name=".UserHelpCentreActivity" />
+        <activity android:name=".UserAddressActivity" />
+        <activity android:name=".UserOrderActivity" />
+        <activity android:name=".UserProfileActivity" />
+        <activity android:name=".UserExplorerActivity" />
+        <activity android:name=".UserPasswordChange" />
         <activity android:name=".UserEditProfileActivity" />
         <activity
             android:name=".UserMainScreen"
@@ -27,7 +34,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".LoginActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" />
 
         <meta-data
             android:name="preloaded_fonts"

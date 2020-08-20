@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:innerRadius="0dp"
+    app:cardElevation="3dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="440dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_centerInParent="true"
+        app:cardBackgroundColor="@color/fui_transparent"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/relLayout"
+            android:background="#D3D3D3"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardImage"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/my_button"
+                app:cardCornerRadius="10dp"
+                android:layout_marginBottom="15dp"
+                android:layout_width="120dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/foodImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@color/fui_bgTwitter"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/foodTitleItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/cardImage"
+                android:layout_marginTop="10dp"
+                android:text="Food Title"
+                android:paddingLeft="15dp"
+                android:fontFamily="@font/baloo_thambi"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/foodDes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/foodTitleItem"
+                android:layout_toRightOf="@id/cardImage"
+                android:text="This is the description of the food item.The description should be long"
+                android:paddingLeft="15dp"
+                android:fontFamily="@font/basic"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/foodPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RM 00.25"
+                android:textColor="@color/dogerblue"
+                android:layout_toRightOf="@id/cardImage"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="15dp"/>
+
+            <Button
+                android:id="@+id/btnBuy"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="15dp"
+               android:layout_alignParentRight="true"
+                android:textColor="@color/dogerblue"
+                android:background="@drawable/my_button"
+                android:text="Buy"
+                android:fontFamily="@font/basic"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/royalBlue</item>
+        <item name="colorPrimary">@color/dogerblue</item>
         <item name="colorPrimaryDark">@color/dogerblue</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
@@ -15,6 +15,7 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="color">@color/dogerblue</item>
     </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
@@ -22,7 +23,7 @@
     <style name="DrawerArrowStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
 
         <item  name="spinBars">true</item>
-        <item name="color">@color/royalBlue</item>
+        <item name="color">@color/dogerblue</item>
 
     </style>
 

@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.feedmeappjava.UserFragment.ProfileFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -65,7 +64,7 @@ public class UserPasswordChange extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(UserPasswordChange.this,"Password Updated", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(UserPasswordChange.this, ProfileFragment.class);
+                            Intent intent = new Intent(UserPasswordChange.this, UserProfileActivity.class);
                             startActivity(intent);
                             finish();
                         }else{
@@ -73,7 +72,6 @@ public class UserPasswordChange extends AppCompatActivity {
                         }
                     }
                 });
-
 
             }
         });

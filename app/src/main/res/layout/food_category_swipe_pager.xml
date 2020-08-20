@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="8dp">
+
+        <RelativeLayout
+            android:layout_width="170dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@color/fui_bgTwitter"
+                android:id="@+id/imageSwipe"/>
+
+            <TextView
+                android:id="@+id/foodtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/imageSwipe"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                android:text="Food"
+                android:fontFamily="@font/montserrat"
+                android:layout_marginLeft="10dp"
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/kinds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/imageSwipe"
+                android:textSize="15sp"
+                android:layout_below="@id/foodtitle"
+                android:text="Kinds"
+                android:fontFamily="@font/basic"
+                android:layout_marginLeft="10dp"
+                android:textColor="#000"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

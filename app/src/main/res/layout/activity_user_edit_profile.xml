@@ -74,18 +74,6 @@
         android:drawableStart="@drawable/ic_phone"
         android:layout_margin="10dp"/>
 
-    <EditText
-        android:id="@+id/editAddress"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_below="@id/editMobile"
-        android:drawablePadding="5dp"
-        android:background="@color/colorWhite"
-        android:padding="10dp"
-        android:hint="Address"
-        android:inputType="textLongMessage"
-        android:drawableStart="@drawable/ic_baseline_location_on_24"
-        android:layout_margin="10dp"/>
 
     <Button
         android:id="@+id/btnSave"
@@ -94,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textColor="@color/colorWhite"
-        android:layout_below="@id/editAddress"
+        android:layout_below="@id/editMobile"
         android:layout_marginLeft="100dp"
         android:text="Save"
         android:layout_marginTop="50dp"/>

@@ -20,7 +20,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.feedmeappjava.User.UserProfile;
-import com.example.feedmeappjava.UserFragment.ProfileFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -97,6 +96,7 @@ public class UserEditProfileActivity extends AppCompatActivity {
 
         newUserName = (EditText)findViewById(R.id.editProfileName);
         newUserEmail = (EditText)findViewById(R.id.editEmail);
+        newUserEmail.setEnabled(false);
         newUserMobile = (EditText)findViewById(R.id.editMobile);
         save = (Button)findViewById(R.id.btnSave);
         profilePic = (CircleImageView) findViewById(R.id.imgUserEditProfile);
@@ -170,11 +170,10 @@ public class UserEditProfileActivity extends AppCompatActivity {
                 progressDialog.setMessage("Profile Pic is uploading..");
                 progressDialog.show();
 
-
                 UserProfile userProfile = new UserProfile(name, email, mobile);
                 databaseReference.setValue(userProfile);
 
-                String userEmailNew = newUserEmail.getText().toString();
+                /*String userEmailNew = newUserEmail.getText().toString();
 
                 firebaseUser.updateEmail(userEmailNew).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -187,7 +186,7 @@ public class UserEditProfileActivity extends AppCompatActivity {
                             Toast.makeText(UserEditProfileActivity.this,"Email Update ", Toast.LENGTH_SHORT).show();
                         }
                     }
-                });
+                });*/
 
                 StorageReference imageReference = storageReference.child(firebaseAuth.getUid()).child("Profile Pic");
                 UploadTask uploadTask = imageReference.putFile(imagePath);
@@ -203,7 +202,8 @@ public class UserEditProfileActivity extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         progressDialog.dismiss();
                         Toast.makeText(UserEditProfileActivity.this,"Upload Successful", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(UserEditProfileActivity.this, ProfileFragment.class));
+                        startActivity(new Intent(UserEditProfileActivity.this, UserProfileActivity.class));
+                        finish();
                     }
                 });
 
@@ -212,7 +212,7 @@ public class UserEditProfileActivity extends AppCompatActivity {
 
     }
 
-    private void sendEmailVerification(){
+    /*private void sendEmailVerification(){
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if(firebaseUser != null){
             firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -229,6 +229,6 @@ public class UserEditProfileActivity extends AppCompatActivity {
                 }
             });
         }
-    }
+    }*/
 
 }

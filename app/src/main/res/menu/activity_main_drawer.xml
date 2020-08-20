@@ -3,18 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/menu_top"
+        android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:id="@+id/drawer_explorer"
+            android:icon="@drawable/ic_baseline_explore_24"
+            android:title="Explore"/>
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/drawer_myOrder"
+            android:icon="@drawable/ic_baseline_shopping_cart_24"
+            android:title="My Orders"/>
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/drawer_myProfile"
+            android:icon="@drawable/ic_baseline_person_24"
+            android:title="My Profile"/>
+        <item
+            android:id="@+id/drawer_myAddresses"
+            android:icon="@drawable/ic_baseline_location_on_24"
+            android:title="My Addresses"/>
+        <item
+            android:id="@+id/drawer_myHelp"
+            android:icon="@drawable/ic_baseline_help_outline_24"
+            android:title="Help Center"/>
+    </group>
+
+    <group
+        android:id="@+id/menu_bottom"
+        android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/drawer_item_settings"
+            android:title="Settings">
+        </item>
+
+        <item
+            android:id="@+id/drawer_item_tAndC"
+            android:title="Terms and Conditions / Privacy">
+        </item>
+
+        <item
+            android:id="@+id/drawer_items_logout"
+            android:title="Log Out">
+        </item>
     </group>
 </menu>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#e2e5d3"
+    android:layout_height="match_parent"
+    tools:context=".UserProfileActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarViewProfile"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:theme="@style/ToolBarStyle"
+            android:background="@color/colorWhite"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_below="@id/appbarProfile"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#fff"
+        android:id="@+id/rl0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="23dp"
+            android:fontFamily="@font/basic"
+            android:text="Contact Info "
+            android:textColor="#000"
+            android:textSize="18sp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="70dp"
+            android:src="@drawable/user"
+            app:civ_border_color="@color/dogerblue"
+            app:civ_border_width="2dp" />
+
+        <TextView
+            android:id="@+id/nameProfile"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="170dp"
+            android:layout_below="@+id/textview1"
+            android:fontFamily="@font/baloo_thambi"
+            android:gravity="center"
+            android:text="USERNAME"
+            android:textColor="#000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/emailProfile"
+            android:text="someone@example.com"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/nameProfile"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/emailProfile"
+            android:id="@+id/numberProfile"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="0123456789"
+            android:layout_marginBottom="30dp"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/editProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/royalBlue"
+            android:layout_centerHorizontal="true"
+            android:paddingRight="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            android:layout_marginStart="40dp"
+            android:text="Edit Profile"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
