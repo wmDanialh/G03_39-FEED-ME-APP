@@ -12,7 +12,9 @@
         android:roundIcon="@drawable/delivery"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserTermsAndConditions"></activity>
+        <activity android:name=".UserDPActivity"></activity>
+        <activity android:name=".UserTCActivity" />
+        <activity android:name=".UserTermsAndConditions" />
         <activity android:name=".UserSettingsActivity" />
         <activity android:name=".UserHelpCentreActivity" />
         <activity android:name=".UserAddressActivity" />

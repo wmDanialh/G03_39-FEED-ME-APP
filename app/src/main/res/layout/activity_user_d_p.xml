@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserTermsAndConditions">
+    tools:context=".UserDPActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbarTcAndDt"
+        android:id="@+id/appbarDt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarTcAndDt"
+         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarDt"
             android:layout_width="match_parent"
             app:theme="@style/ToolBarStyle"
             android:layout_height="?attr/actionBarSize"
@@ -21,11 +21,5 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
-
-    <ListView
-        android:layout_below="@+id/appbarTcAndDt"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listviewTcAndDt"/>
 
 </RelativeLayout>

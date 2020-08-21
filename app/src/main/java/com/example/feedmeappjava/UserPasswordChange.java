@@ -30,7 +30,7 @@ public class UserPasswordChange extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_password_change);
 
-        Toolbar toolbar = findViewById(R.id.toolbarUserPassword);
+        Toolbar toolbar = findViewById(R.id.toolbarTcAndDt);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Change Password");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

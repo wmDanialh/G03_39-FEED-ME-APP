@@ -109,13 +109,12 @@ public class UserMainScreen extends AppCompatActivity implements NavigationView.
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setTitle("Log Out");
-        builder.setMessage("Are you sure you would like to turn off the system?");
+        builder.setMessage("Are you sure you would like to log out the app?");
 
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int which) {
                 // Do nothing but close the dialog
-
 
                 firebaseAuth.signOut();
                 startActivity(new Intent(UserMainScreen.this,LoginActivity.class));
@@ -136,19 +135,19 @@ public class UserMainScreen extends AppCompatActivity implements NavigationView.
         alert.show();
     }
 
-    /*@Override
+    @Override
     protected void onStart() {
         super.onStart();
 
         FirebaseUser mFirebaseUser = firebaseAuth.getCurrentUser();
-        if(mFirebaseUser == null){
+        if(mFirebaseUser != null){
 
         }
         else {
             startActivity(new Intent(this,UserMainScreen.class));
             finish();
         }
-    }*/
+    }
 
     @Override
     public void onBackPressed() {
