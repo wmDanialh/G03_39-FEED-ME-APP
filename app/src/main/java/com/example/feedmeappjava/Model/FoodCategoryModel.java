@@ -2,38 +2,34 @@ package com.example.feedmeappjava.Model;
 
 public class FoodCategoryModel {
 
-    private int image;
-    private String title;
-    private String kinds;
+    private String Name;
+    private String Image;
 
-    public FoodCategoryModel(int image, String title, String kinds) {
-        this.image = image;
-        this.title = title;
-        this.kinds = kinds;
+    public FoodCategoryModel(){
     }
 
-    public int getImage() {
-        return image;
+    public FoodCategoryModel(String name, String image) {
+        Name = name;
+        Image = image;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public String getName() {
+        return Name;
     }
 
-    public String getTitle() {
-        return title;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getImage() {
+        return Image;
     }
 
-    public String getKinds() {
-        return kinds;
+    public void setImage(String image) {
+        Image = image;
     }
 
-    public void setKinds(String kinds) {
-        this.kinds = kinds;
-    }
+
+
 
 }

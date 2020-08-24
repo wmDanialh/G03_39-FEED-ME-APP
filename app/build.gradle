@@ -37,6 +37,14 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:6.2.0'
     implementation 'com.firebaseui:firebase-ui-database:6.2.0'
 
+    //Implementation Firebase for Androidx
+    //implementation 'com.google.firebase:firebase-auth:11.0.2'
+    //implementation 'com.google.firebase:firebase-database:11.0.2'
+    //implementation 'com.google.firebase:firebase-storage:11.0.2'
+    //implementation 'com.google.android.gms:play-services-auth:11.0.2'
+
+    //Matreial Support
+    implementation 'com.cepheuen.elegant-number-button:lib:1.0.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.navigation:navigation-fragment:2.3.0'
     implementation 'androidx.navigation:navigation-ui:2.3.0'
@@ -46,8 +54,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation 'com.agrawalsuneet.androidlibs:dotsloader:1.4'
-    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+    implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.0-rc03'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.0-rc03'

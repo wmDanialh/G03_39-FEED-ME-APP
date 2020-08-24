@@ -4,7 +4,7 @@ public class UserProfile {
     public String userName;
     public String userEmail;
     public String userMobile;
-    public String userAddress;
+
 
     public UserProfile(){
 
@@ -14,9 +14,7 @@ public class UserProfile {
         this.userName = userName;
         this.userEmail = userEmail;
         this.userMobile = userMobile;
-        this.userAddress = userAddress;
     }
-
 
 
     public String getUserName() {
@@ -37,10 +35,6 @@ public class UserProfile {
 
     public String getUserAddress() {
         return userEmail;
-    }
-
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
     }
 
     public String getUserMobile() {

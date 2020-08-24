@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -22,19 +23,28 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.feedmeappjava.User.UserProfile;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class UserMainScreen extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     FirebaseAuth firebaseAuth;
+    private FirebaseDatabase firebaseDatabase;
+    private NavigationView navigationView;
 
     private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout drawerLayout;
+
+    TextView textFullName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +56,13 @@ public class UserMainScreen extends AppCompatActivity implements NavigationView.
 
         setSupportActionBar(toolbar);
 
+        //Init Firebase
+        firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
 
-        //Init Firebase
+        DatabaseReference databaseReference = firebaseDatabase.getReference("User").child(firebaseAuth.getUid());
+
+        //textFullName = (TextView)navigationView.getHeaderView(0).findViewById(R.id.fullnameHead);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -56,7 +70,7 @@ public class UserMainScreen extends AppCompatActivity implements NavigationView.
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -98,10 +112,19 @@ public class UserMainScreen extends AppCompatActivity implements NavigationView.
             }
         });
 
-        //Set Name For User
-        View headerView = navigationView.getHeaderView(0);
 
-        //Load Menu
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                //textFullName.setText(dataSnapshot.child("userName").getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(UserMainScreen.this, databaseError.getCode(),Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 

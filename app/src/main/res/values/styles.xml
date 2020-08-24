@@ -33,5 +33,21 @@
         <item name="actionMenuTextColor">@color/royalBlue</item>
     </style>
 
+    <style name="CollapseAppbar" parent="@style/TextAppearance.AppCompat.Medium">
+
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:textStyle">normal</item>
+
+    </style>
+
+    <style name="ExpandedAppBar" parent="@style/TextAppearance.AppCompat.Title">
+
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textStyle">normal</item>
+
+    </style>
+
 
 </resources>
