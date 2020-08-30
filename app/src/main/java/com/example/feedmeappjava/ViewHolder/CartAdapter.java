@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
-import com.example.feedmeappjava.Cart;
 import com.example.feedmeappjava.Interface.ItemClickListener;
 import com.example.feedmeappjava.Model.Order;
 import com.example.feedmeappjava.R;

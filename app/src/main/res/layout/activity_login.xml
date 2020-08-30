@@ -11,13 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/background_image_one_signin" />
+        android:src="@drawable/l" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="106dp"
         android:layout_marginEnd="8dp"
         android:text="Welcome Back"
         android:textColor="@android:color/white"
@@ -40,13 +40,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:drawableLeft="@drawable/ic_person"
+            android:drawablePadding="20dp"
+            android:drawableLeft="@drawable/white_person"
             android:hint="Email"
             android:backgroundTint="@android:color/transparent"
             android:inputType="textEmailAddress"
             android:padding="15dp"
-            android:textColor="#292929"
-            android:textColorHint="#797979" />
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -54,7 +55,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="30dp"
-            android:background="#999999" />
+            android:background="#fff" />
 
         <EditText
             android:id="@+id/etPassword"
@@ -65,10 +66,11 @@
             android:backgroundTint="@android:color/transparent"
             android:hint="Password"
             android:inputType="textPassword"
-            android:drawableLeft="@drawable/ic_lock"
+            android:drawablePadding="20dp"
+            android:drawableLeft="@drawable/white_lock"
             android:padding="15dp"
-            android:textColor="#292929"
-            android:textColorHint="#797979" />
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -76,7 +78,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="30dp"
-            android:background="#999999" />
+            android:background="#fff" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -89,14 +91,14 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerInParent="true"
-                android:src="@drawable/round_arrow_forward_24"
+                android:src="@drawable/black_arrow"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="30dp"
                 android:tint="@android:color/white"
                 android:layout_marginBottom="20dp"
                 android:elevation="0dp"
                 app:elevation="0dp"
-                android:backgroundTint="#4E525B"
+                android:backgroundTint="#fff"
                 app:fabCustomSize="80dp"
                 tools:ignore="RelativeOverlap" />
 
@@ -107,7 +109,7 @@
                 android:layout_centerInParent="true"
                 android:layout_marginStart="30dp"
                 android:text="Sign in"
-                android:textColor="#191919"
+                android:textColor="#fff"
                 android:textSize="25sp"
                 android:padding="15dp"
                 android:textStyle="bold" />
@@ -129,6 +131,8 @@
                 android:padding="15dp"
                 android:text="Sign up"
                 android:textSize="18sp"
+                android:textColor="#fff"
+                android:background="@color/fui_transparent"
                 android:textStyle="bold" />
 
             <TextView
@@ -140,6 +144,7 @@
                 android:layout_marginEnd="30dp"
                 android:padding="15dp"
                 android:text="Forgot Password?"
+                android:textColor="#fff"
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </RelativeLayout>

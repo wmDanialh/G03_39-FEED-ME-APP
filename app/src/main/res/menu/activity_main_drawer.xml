@@ -15,6 +15,10 @@
             android:icon="@drawable/ic_baseline_shopping_cart_24"
             android:title="My Orders"/>
         <item
+            android:id="@+id/drawer_myOrderStatus"
+            android:icon="@drawable/ic_baseline_notifications_none_24"
+            android:title="My Cart"/>
+        <item
             android:id="@+id/drawer_myProfile"
             android:icon="@drawable/ic_baseline_person_24"
             android:title="My Profile"/>

@@ -19,6 +19,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.feedmeappjava.Common.Common;
+import com.example.feedmeappjava.Model.UserProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,8 +29,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -52,7 +57,6 @@ public class LoginActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         getWindow().setStatusBarColor(Color.TRANSPARENT);
-        setContentView(R.layout.activity_login);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         Email = (EditText)findViewById(R.id.etEmail);
@@ -66,9 +70,55 @@ public class LoginActivity extends AppCompatActivity {
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference table_user = database.getReference("User");
+
+        Login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final ProgressDialog mDialog = new ProgressDialog(LoginActivity.this);
+                mDialog.setMessage("Please Wating...");
+                mDialog.show();
+
+                table_user.addValueEventListener(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        //check if user not exist in database
+                        if(dataSnapshot.child(Email.getText().toString()).exists()) {
+                            //get user information
+                            mDialog.dismiss();
+                            UserProfile user = dataSnapshot.child(Email.getText().toString()).getValue(UserProfile.class);
+                            user.setUserMobile(Email.getText().toString());
+                            if (user.getUserPassword().equals(Password.getText().toString())) {
+
+                                Intent homeIntent = new Intent(LoginActivity.this, UserMainScreen.class);
+                                Common.currentUser = user;
+                                startActivity(homeIntent);
+                                finish();
+
+                            } else {
+                                Toast.makeText(LoginActivity.this, "Wrong Password !", Toast.LENGTH_SHORT).show();
+                            }
+                        }else{
+                            Toast.makeText(LoginActivity.this, "User not exist in Database !", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
+
+        /*
         if(user != null){
 
-            if((user.getEmail()).equals("wanmohddanialhakim@gmail.com")){
+            if((user.getEmail()).equals("null@gmail.com")){
                 finish();
                 startActivity(new Intent(LoginActivity.this, AdminMainScreen.class));
             }else{
@@ -84,6 +134,8 @@ public class LoginActivity extends AppCompatActivity {
                 validate(Email.getText().toString(), Password.getText().toString());
             }
         });
+
+         */
 
         userSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,8 +183,6 @@ public class LoginActivity extends AppCompatActivity {
                 passwordResetDialog.create().show();
             }
         });
-
-
     }
 
     private void validate (String userEmail, String userPassword){
@@ -140,7 +190,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setMessage("Please wait ...");
         progressDialog.show();
 
-        if(userEmail.equals("wanmohddanialhakim@gmail.com")) {
+        if(userEmail.equals("null@gmail.com")) {
 
             firebaseAuth.signInWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -191,4 +241,5 @@ public class LoginActivity extends AppCompatActivity {
             firebaseAuth.signOut();
         }
     }
+
 }

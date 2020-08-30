@@ -18,8 +18,9 @@ import com.example.feedmeappjava.Common.Common;
 import com.example.feedmeappjava.Database.Database;
 import com.example.feedmeappjava.Model.Order;
 import com.example.feedmeappjava.Model.Request;
-import com.example.feedmeappjava.User.UserProfile;
 import com.example.feedmeappjava.ViewHolder.CartAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -49,7 +50,7 @@ public class UserOrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_order);
 
         database = FirebaseDatabase.getInstance();
-        requests = database.getReference("Requests");
+        requests = database.getReference("requests");
 
         recyclerView = (RecyclerView)findViewById(R.id.listCart);
         recyclerView.setHasFixedSize(true);
@@ -74,24 +75,51 @@ public class UserOrderActivity extends AppCompatActivity {
     private void showAlertDialog() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(UserOrderActivity.this);
         alertDialog.setTitle("One More Step");
-        alertDialog.setMessage("Please enter your address: ");
+        //alertDialog.setMessage("Please enter your address: ");
+        alertDialog.setMessage("Please enter as follow: ");
 
+        final EditText edtName = new EditText(UserOrderActivity.this);
+        //edtName.setHint("Enter your name");
         final EditText edtAddress = new EditText(UserOrderActivity.this);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT
+        edtAddress.setHint("Enter your address");
+        final EditText edtPhone = new EditText(UserOrderActivity.this);
+        //edtPhone.setHint("Enter your mobile phone number");
+
+
+        LinearLayout lp = new LinearLayout(UserOrderActivity.this);
+        lp.setOrientation(LinearLayout.VERTICAL);
+        lp.setPadding(8,8,8,8);
+
+        /*LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
         );
-        edtAddress.setLayoutParams(lp);
-        alertDialog.setView(edtAddress);
-        alertDialog.setIcon(R.drawable.ic_baseline_location_on_24);
+
+         */
+        //lp.addView(edtName);
+        //lp.addView(edtPhone);
+        lp.addView(edtAddress);
+
+        //edtPhone.setLayoutParams(lp);
+        //edtAddress.setLayoutParams(lp);
+        //alertDialog.setView(edtPhone);
+        //alertDialog.setView(edtAddress);
+
+        alertDialog.setView(lp);
+        alertDialog.setIcon(R.drawable.ic_baseline_shopping_cart_24);
 
         alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+
+                //FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+
                 Request request = new Request(
 
                         Common.currentUser.getUserMobile(),
                         Common.currentUser.getUserName(),
+                        //edtPhone.getText().toString(), //< ------- PROBLEM AS GG AS FF (PRESS F TO PAY RESPECT)
+                        //edtName.getText().toString(), // <------- PROBLEM AS GG AS FF (PRESS F TO PAY RESPECT)
                         //We figure it out on how to get address from input user in another activity
                         edtAddress.getText().toString(),
                         txtTotalPrice.getText().toString(),
@@ -103,6 +131,7 @@ public class UserOrderActivity extends AppCompatActivity {
                 Toast.makeText(UserOrderActivity.this,"Thank you, Your order has been placed", Toast.LENGTH_SHORT).show();
                 finish();
             }
+
         });
 
         alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

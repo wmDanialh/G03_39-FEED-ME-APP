@@ -7,6 +7,7 @@
     tools:context=".UserMainScreen"
     android:layout_height="match_parent">
 
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:id="@+id/appBar"
@@ -23,12 +24,12 @@
 
 
     <RelativeLayout
-        android:layout_below="@id/appBar"
+        android:layout_below="@+id/appBar"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:background="#fff"
-        android:id="@+id/rl0"
+        android:id="@+id/rsd0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -58,9 +59,10 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/igii"
         android:background="#fff"
         android:layout_width="match_parent"
-        android:layout_below="@id/rl0"
+        android:layout_below="@id/rsd0"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -259,8 +261,14 @@
 
     </RelativeLayout>
 
-
-
-
+    <WebView
+        android:id="@+id/wbe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/igii"/>
 
 </RelativeLayout>

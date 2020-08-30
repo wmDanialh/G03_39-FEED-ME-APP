@@ -1,5 +1,6 @@
 package com.example.feedmeappjava;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.feedmeappjava.User.UserProfile;
+import com.example.feedmeappjava.Model.UserProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 
 import com.google.android.gms.tasks.Task;
@@ -18,8 +19,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import android.graphics.Color;
 import android.view.WindowManager;
@@ -41,25 +45,68 @@ public class RegisterActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         getWindow().setStatusBarColor(Color.TRANSPARENT);
-        setContentView(R.layout.activity_register);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
         regButton = findViewById(R.id.btnSignUp);
+
         userLogin = findViewById(R.id.tvUserLogin);
         userPassword = findViewById(R.id.etUserPassword);
         userEmail = findViewById(R.id.etUserEmail);
         userName = findViewById(R.id.etUserName);
         userMobile = findViewById(R.id.etUserMobile);
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference table_user = database.getReference("User");
+
+        regButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final ProgressDialog mDialog = new ProgressDialog(RegisterActivity.this);
+                mDialog.setMessage("Please Wait...");
+                mDialog.show();
+
+                table_user.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        //check if user not exist in database
+                        if (dataSnapshot.child(userMobile.getText().toString()).exists()) {
+                            //get user information
+                            mDialog.dismiss();
+                            UserProfile user = dataSnapshot.child(userMobile.getText().toString()).getValue(UserProfile.class);
+                            Toast.makeText(RegisterActivity.this, "Phone number already registered !", Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            mDialog.dismiss();
+                            UserProfile user = new UserProfile(userName.getText().toString(),userEmail.getText().toString(),userMobile.getText().toString(), userPassword.getText().toString());
+                            table_user.child(userMobile.getText().toString()).setValue(user);
+                            Toast.makeText(RegisterActivity.this, "Sign Up Successfully !", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    }
+                    @Override
+                    public void onCancelled (DatabaseError databaseError){
+
+                    }
+                });
+            }
+        });
+
+
+/*
+
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                final ProgressDialog mDialog = new ProgressDialog(RegisterActivity.this);
+                mDialog.setMessage("Please Wait...");
+                mDialog.show();
+
                 if(validate()){
                     //Upload data to the database
                     String user_email = userEmail.getText().toString().trim();
                     String user_password = userPassword.getText().toString().trim();
-
 
                     firebaseAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -80,6 +127,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
+ */
         userLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,6 +136,8 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
     }
+
+    /*
 
     private Boolean validate(){
         Boolean result = false;
@@ -140,4 +190,6 @@ public class RegisterActivity extends AppCompatActivity {
         UserProfile userProfile = new UserProfile(name, email, mobile);
         myRef.setValue(userProfile);
     }
+
+     */
 }

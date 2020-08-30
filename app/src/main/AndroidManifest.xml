@@ -4,9 +4,8 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,9 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Cart"></activity>
-        <activity android:name=".FoodDetail" />
-        <activity android:name=".FoodList" />
+        <activity android:name=".UserAddAddressActivity"></activity>
+        <activity android:name=".UserOrderStatusActivity" />
+        <activity android:name=".UserFoodDetailActivity" />
+        <activity android:name=".UserFoodListActivity" />
         <activity android:name=".UserDPActivity" />
         <activity android:name=".UserTCActivity" />
         <activity android:name=".UserTermsAndConditions" />
@@ -34,7 +34,7 @@
             android:label="@string/title_activity_navigation_drawer"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AdminMainScreen" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

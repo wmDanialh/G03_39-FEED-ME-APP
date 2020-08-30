@@ -80,7 +80,7 @@ public class UserExplorerActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
                         //Get Category Id and send to new activity
-                        Intent foodlist = new Intent(UserExplorerActivity.this,FoodList.class);
+                        Intent foodlist = new Intent(UserExplorerActivity.this, UserFoodListActivity.class);
                         foodlist.putExtra("CategoryId",adapter.getRef(position).getKey());
                         startActivity(foodlist);
                         //Because CategoryId is key, so we just get key of this item
