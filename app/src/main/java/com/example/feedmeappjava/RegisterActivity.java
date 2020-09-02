@@ -1,20 +1,24 @@
 package com.example.feedmeappjava;
+// 1. We gonna set the UID as our phone number
+// 2.the register will be our email and password authentication
+
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.feedmeappjava.Model.UserProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
-
 import com.google.android.gms.tasks.Task;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,50 +29,58 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import android.graphics.Color;
-import android.view.WindowManager;
-
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText userName, userPassword, userEmail, userMobile;
     private FloatingActionButton regButton;
     private TextView userLogin;
-    private FirebaseAuth firebaseAuth;
+
+    FirebaseAuth firebaseAuth;
 
     String email, name, password, mobile;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        getWindow().setStatusBarColor(Color.TRANSPARENT);
+        regButton = (FloatingActionButton)findViewById(R.id.btnSignUp);
+        userLogin = (TextView) findViewById(R.id.tvUserLogin);
+        userPassword = (EditText)findViewById(R.id.etUserPassword);
+        userEmail = (EditText)findViewById(R.id.etUserEmail);
+        userName = (EditText)findViewById(R.id.etUserName);
+        userMobile = (EditText)findViewById(R.id.etUserMobile);
 
+
+        //FirebaseDatabase database = FirebaseDatabase.getInstance();
+        //final DatabaseReference table_user = database.getReference("Users");
+        //firebaseAuth = table_user.getDatabase().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
+        userLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        regButton = findViewById(R.id.btnSignUp);
-
-        userLogin = findViewById(R.id.tvUserLogin);
-        userPassword = findViewById(R.id.etUserPassword);
-        userEmail = findViewById(R.id.etUserEmail);
-        userName = findViewById(R.id.etUserName);
-        userMobile = findViewById(R.id.etUserMobile);
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference table_user = database.getReference("User");
 
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                final ProgressDialog mDialog = new ProgressDialog(RegisterActivity.this);
-                mDialog.setMessage("Please Wait...");
-                mDialog.show();
+            public void onClick(View view) {
+
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                final DatabaseReference table_user = database.getReference("User");
 
                 table_user.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        final ProgressDialog mDialog = new ProgressDialog(RegisterActivity.this);
+                        mDialog.setMessage("Please Wait...");
+                        mDialog.show();
+
                         //check if user not exist in database
                         if (dataSnapshot.child(userMobile.getText().toString()).exists()) {
                             //get user information
@@ -78,67 +90,46 @@ public class RegisterActivity extends AppCompatActivity {
 
                         } else {
                             mDialog.dismiss();
-                            UserProfile user = new UserProfile(userName.getText().toString(),userEmail.getText().toString(),userMobile.getText().toString(), userPassword.getText().toString());
-                            table_user.child(userMobile.getText().toString()).setValue(user);
-                            Toast.makeText(RegisterActivity.this, "Sign Up Successfully !", Toast.LENGTH_SHORT).show();
-                            finish();
+
+                            String user_email = userEmail.getText().toString().trim();
+                            String user_password = userPassword.getText().toString().trim();
+                            final String user_phoneNumber = userMobile.getText().toString().trim();
+
+                            if(validate()){
+                                //Upload data to the database
+                                firebaseAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if(task.isSuccessful()){
+
+                                            //Bundle bundle = new Bundle();
+                                            //bundle.putString(FirebaseAnalytics.Param.ITEM_ID, user_phoneNumber);
+                                            Toast.makeText(RegisterActivity.this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
+                                            //sendEmailVerification();
+                                            //Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                            //startActivity(intent);
+                                            //finish();
+
+                                        }else{
+                                            Toast.makeText(RegisterActivity.this, "Sign Up Failed", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                                UserProfile user = new UserProfile(userEmail.getText().toString(),userMobile.getText().toString(),userName.getText().toString(), userPassword.getText().toString());
+                                table_user.child(userMobile.getText().toString()).setValue(user).equals(firebaseAuth);
+                                Toast.makeText(RegisterActivity.this, "Sign Up Successfully !", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
                         }
                     }
                     @Override
                     public void onCancelled (DatabaseError databaseError){
-
                     }
                 });
             }
         });
 
-
-/*
-
-        regButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                final ProgressDialog mDialog = new ProgressDialog(RegisterActivity.this);
-                mDialog.setMessage("Please Wait...");
-                mDialog.show();
-
-                if(validate()){
-                    //Upload data to the database
-                    String user_email = userEmail.getText().toString().trim();
-                    String user_password = userPassword.getText().toString().trim();
-
-                    firebaseAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-
-                            if(task.isSuccessful()){
-                                Toast.makeText(RegisterActivity.this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
-                                finish();
-                                sendEmailVerification();
-                            }else{
-                                Toast.makeText(RegisterActivity.this, "Sign Up Failed", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                }
-
-            }
-        });
-
-
- */
-        userLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-            }
-        });
-
     }
-
-    /*
-
     private Boolean validate(){
         Boolean result = false;
 
@@ -153,7 +144,6 @@ public class RegisterActivity extends AppCompatActivity {
         }else{
             result = true;
         }
-
         return result;
     }
 
@@ -164,6 +154,8 @@ public class RegisterActivity extends AppCompatActivity {
         String mobile = userMobile.getText().toString();
     }
 
+    /*
+
     private void sendEmailVerification(){
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if(firebaseUser != null){
@@ -171,7 +163,7 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
-                        sendUserData();
+                        //sendUserData();
                         Toast.makeText(RegisterActivity.this, "Successfully Sign Up, Verification Email is being sent!", Toast.LENGTH_SHORT).show();
                         firebaseAuth.signOut();
                         finish();
@@ -184,12 +176,12 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
+    /*
     private void sendUserData(){
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference myRef = firebaseDatabase.getReference("User").child(firebaseAuth.getUid());
         UserProfile userProfile = new UserProfile(name, email, mobile);
         myRef.setValue(userProfile);
     }
-
      */
 }

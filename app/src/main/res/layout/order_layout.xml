@@ -3,11 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_marginTop="8dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     app:cardElevation="4dp"
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:layout_width="match_parent"
@@ -26,6 +30,42 @@
             android:orientation="vertical">
 
             <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FeedMe App Receipt"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A-11, Jalan Tun Ismail 2, 25000 Kuantan, Pahang"
+                android:textColor="#000"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+6014-702 3124"
+                android:textColor="#000"
+                android:textSize="15sp"/>
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="wanmohddanialhakim@gmail.com"
+                android:textColor="#000"
+                android:textSize="15sp"/>
+
+            <TextView
                 android:id="@+id/order_id"
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical|start"
@@ -33,6 +73,7 @@
                 android:textStyle="bold"
                 android:text="#11111"
                 android:layout_width="wrap_content"
+                android:textColor="#000"
                 android:layout_height="wrap_content"/>
 
             <TextView
@@ -43,6 +84,7 @@
                 android:textStyle="italic"
                 android:text="Status"
                 android:layout_width="wrap_content"
+                android:textColor="#000"
                 android:layout_height="wrap_content"/>
 
             <TextView
@@ -53,6 +95,7 @@
                 android:textStyle="italic"
                 android:text="0139035514"
                 android:layout_width="wrap_content"
+                android:textColor="#000"
                 android:layout_height="wrap_content"/>
 
             <TextView
@@ -62,6 +105,7 @@
                 android:textAllCaps="true"
                 android:textStyle="italic"
                 android:text="ADDRESS"
+                android:textColor="#000"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 

@@ -2,6 +2,7 @@ package com.example.feedmeappjava;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.View;
@@ -41,6 +42,20 @@ public class UserFoodDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_food_detail);
+
+        Toolbar toolbar = findViewById(R.id.toolnarFoodDetail);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Food Name");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //toolbar.setTitleTextColor(getResources().getColor(android.R.color.holo_red_dark));
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         //Firebase
         database = FirebaseDatabase.getInstance();

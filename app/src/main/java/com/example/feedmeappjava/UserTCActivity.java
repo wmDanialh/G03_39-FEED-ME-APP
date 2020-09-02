@@ -5,8 +5,14 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class UserTCActivity extends AppCompatActivity {
+
+    WebView webView;
+
+    String url= "https://feedmeapptermsandconditions.blogspot.com/2020/09/feed-me-appt-published2020-terms-ofuse.html";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +32,11 @@ public class UserTCActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        webView = (WebView)findViewById(R.id.webTerms) ;
+        webView.setWebViewClient(new WebViewClient());
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl(url);
 
     }
 }

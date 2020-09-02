@@ -51,9 +51,11 @@ public class UserMainScreen extends AppCompatActivity implements NavigationView.
     private CircleImageView imgHeader;
     //TextView txtHeader;
 
-    WebView wv;
+    WebView wv, youtube;
 
     String url= "https://www.facebook.com/projektmakanMY/?rf=174171870170011";
+
+    String url1= "https://www.youtube.com/watch?v=ET3_mLy2Hs8";
 
     private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout drawerLayout;
@@ -65,10 +67,15 @@ public class UserMainScreen extends AppCompatActivity implements NavigationView.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_main_screen);
 
-        wv = (WebView)findViewById(R.id.wbe) ;
+        wv = (WebView)findViewById(R.id.wbe);
         wv.setWebViewClient(new WebViewClient());
         wv.getSettings().setJavaScriptEnabled(true);
         wv.loadUrl(url);
+
+        youtube = (WebView)findViewById(R.id.wbeYoutube);
+        youtube.setWebViewClient(new WebViewClient());
+        youtube.getSettings().setJavaScriptEnabled(true);
+        youtube.loadUrl(url1);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("");

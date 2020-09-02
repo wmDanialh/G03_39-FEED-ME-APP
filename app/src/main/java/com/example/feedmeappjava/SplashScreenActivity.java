@@ -22,9 +22,9 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     private Handler mHandler = new Handler();
 
-    Animation topAnim, bottomAnim;
+    Animation topAnim, bottomAnim,trademarkAnim;
     ImageView image;
-    TextView logo, slogan;
+    TextView logo, slogan,copyright;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +34,16 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         topAnim = AnimationUtils.loadAnimation(this,R.anim.top_animation);
         bottomAnim = AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
+        trademarkAnim = AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
 
         progressBar = findViewById(R.id.progressBar);
         image = findViewById(R.id.imageView32);
         slogan = findViewById(R.id.text);
+        copyright = findViewById(R.id.textTradeMark);
 
         image.setAnimation(topAnim);
         slogan.setAnimation(bottomAnim);
+        copyright.setAnimation(trademarkAnim);
 
         new Handler().postDelayed(new Runnable() {
             @Override

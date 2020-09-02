@@ -2,6 +2,7 @@ package com.example.feedmeappjava;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -48,6 +49,20 @@ public class UserOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_order);
+
+        Toolbar toolbar = findViewById(R.id.toolbarOrder);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Your Order List");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //toolbar.setTitleTextColor(getResources().getColor(android.R.color.holo_red_dark));
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         database = FirebaseDatabase.getInstance();
         requests = database.getReference("requests");

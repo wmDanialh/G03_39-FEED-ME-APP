@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference table_user = database.getReference("User");
 
         Login.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 final ProgressDialog mDialog = new ProgressDialog(LoginActivity.this);
-                mDialog.setMessage("Please Wating...");
+                mDialog.setMessage("Please Wait...");
                 mDialog.show();
 
                 table_user.addValueEventListener(new ValueEventListener() {
@@ -93,7 +93,6 @@ public class LoginActivity extends AppCompatActivity {
                             UserProfile user = dataSnapshot.child(Email.getText().toString()).getValue(UserProfile.class);
                             user.setUserMobile(Email.getText().toString());
                             if (user.getUserPassword().equals(Password.getText().toString())) {
-
                                 Intent homeIntent = new Intent(LoginActivity.this, UserMainScreen.class);
                                 Common.currentUser = user;
                                 startActivity(homeIntent);

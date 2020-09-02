@@ -7,7 +7,24 @@
     android:background="#e2e5d3"
     tools:context=".UserOrderActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarOrder"
+            android:layout_width="match_parent"
+            app:theme="@style/ToolBarStyle"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorWhite"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/appbarOrder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/listCart"
