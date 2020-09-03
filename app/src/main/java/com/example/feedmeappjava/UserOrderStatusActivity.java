@@ -57,6 +57,12 @@ public class UserOrderStatusActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+        //If we start OrderStatus activity from Home Activity
+        //We will not put any extra, so we just loadOrder by phone from Common
+        //if(getIntent() == null)
+
+        //else
+            //loadOrders(getIntent().getStringExtra("userPhone"));
         loadOrders(Common.currentUser.getUserMobile());
 
     }
@@ -70,7 +76,7 @@ public class UserOrderStatusActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull OrderViewHolder holder, int position, @NonNull Request model) {
                 holder.txtOrderId.setText(adapter.getRef(position).getKey());
-                holder.txtOrderStatus.setText(convertCodeToStatus(model.getStatus()));
+                holder.txtOrderStatus.setText(Common.convertCodeToStatus(model.getStatus()));
                 holder.txtOrderAddress.setText(model.getAddress());
                 holder.txtOrderPhone.setText(model.getPhone());
             }
@@ -86,17 +92,5 @@ public class UserOrderStatusActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
     }
-
-    private String convertCodeToStatus(String status) {
-        if(status.equals("0"))
-            return "Placed";
-        else if(status.equals("1"))
-            return "Preparing";
-        else if(status.equals("2"))
-            return "Packaging";
-        else
-            return "Food Ready";
-    }
-
 
 }
