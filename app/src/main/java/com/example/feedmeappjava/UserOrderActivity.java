@@ -1,5 +1,6 @@
 package com.example.feedmeappjava;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,8 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -249,4 +252,21 @@ public class UserOrderActivity extends AppCompatActivity {
         txtTotalPrice.setText(fmt.format(total));
     }
 
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+
+        if(item.getTitle().equals(Common.DELETE))
+            deleteCart(item.getOrder());
+        return true;
+    }
+
+    private void deleteCart(int position) {
+
+        cart.remove(position);
+
+        new Database(this).cleanCart();
+
+        for(Order item:cart)
+            new Database(this).addToCart(item);
+    }
 }
