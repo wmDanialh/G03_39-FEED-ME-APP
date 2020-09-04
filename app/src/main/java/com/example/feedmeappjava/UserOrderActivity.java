@@ -195,7 +195,7 @@ public class UserOrderActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PAYPAL_REQUEST_CODE) {
-            if (requestCode == RESULT_OK) {
+            if (resultCode == RESULT_OK) {
                 PaymentConfirmation paymentConfirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
 
                 if (paymentConfirmation != null) {
