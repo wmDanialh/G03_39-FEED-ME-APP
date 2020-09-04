@@ -24,7 +24,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.feedmeappjava.Model.UserProfile;
-import com.example.feedmeappjava.Services.ListenOrder;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
@@ -84,8 +83,8 @@ public class UserMainScreen extends AppCompatActivity implements NavigationView.
         setSupportActionBar(toolbar);
 
         //Register Srvice
-        Intent service = new Intent(UserMainScreen.this, ListenOrder.class);
-        startForegroundService(service);
+        //Intent service = new Intent(UserMainScreen.this, ListenOrder.class);
+        //startForegroundService(service);
 
         //Init Firebase
         //firebaseDatabase = FirebaseDatabase.getInstance();

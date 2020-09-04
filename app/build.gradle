@@ -43,6 +43,9 @@ dependencies {
     //implementation 'com.google.firebase:firebase-storage:11.0.2'
     //implementation 'com.google.android.gms:play-services-auth:11.0.2'
 
+    //Payment
+    implementation 'com.paypal.sdk:paypal-android-sdk:2.15.3'
+
     //Matreial Support
     implementation 'com.cepheuen.elegant-number-button:lib:1.0.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
