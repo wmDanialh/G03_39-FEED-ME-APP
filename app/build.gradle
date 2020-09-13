@@ -62,6 +62,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
     implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
+    compile 'com.stepstone.apprating:app-rating:2.3.1'
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'

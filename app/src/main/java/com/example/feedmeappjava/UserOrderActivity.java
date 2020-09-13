@@ -205,17 +205,16 @@ public class UserOrderActivity extends AppCompatActivity {
 
 
                         Request request = new Request(
-
+                                address,
+                                cart,
                                 Common.currentUser.getUserName(),
+                                jsonObject.getJSONObject("response").getString("state"),
                                 Common.currentUser.getUserMobile(),
+                                "0",
                                 //edtPhone.getText().toString(), //< ------- PROBLEM AS GG AS FF (PRESS F TO PAY RESPECT)
                                 //edtName.getText().toString(), // <------- PROBLEM AS GG AS FF (PRESS F TO PAY RESPECT)
                                 //We figure it out on how to get address from input user in another activity
-                                address,
-                                txtTotalPrice.getText().toString(),
-                                jsonObject.getJSONObject("response").getString("state"),
-                                "0",
-                                cart
+                                txtTotalPrice.getText().toString()
                         );
                         requests.child(String.valueOf(System.currentTimeMillis()))
                                 .setValue(request);

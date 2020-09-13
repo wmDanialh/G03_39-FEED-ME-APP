@@ -57,6 +57,19 @@
         android:layout_margin="10dp"
         app:layout_anchorGravity="bottom|right|end"/>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_rating"
+        android:backgroundTint="#fff"
+        android:src="@drawable/ic_baseline_star_24"
+        app:pressedTranslationZ="12dp"
+        app:layout_anchor="@id/app_bar_layout"
+        android:elevation="6dp"
+        android:layout_margin="10dp"
+        app:layout_anchorGravity="bottom|right|start"/>
+
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
@@ -140,16 +153,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/desFoods"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:lineSpacingMultiplier="1.5"
-                    android:padding="12dp"
-                    android:text="Description"
-                    android:textColor="#000"
-                    android:textSize="14sp"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RatingBar
+                        android:id="@+id/ratingBar"
+                        android:rating="0"
+                        android:max="5"
+                        android:isIndicator="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    
+                    <TextView
+                        android:id="@+id/desFoods"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:lineSpacingMultiplier="1.5"
+                        android:padding="12dp"
+                        android:text="Description"
+                        android:textColor="#000"
+                        android:textSize="14sp"/>
+                    
+                </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 

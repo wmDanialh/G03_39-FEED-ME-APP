@@ -59,11 +59,13 @@ public class UserOrderStatusActivity extends AppCompatActivity {
 
         //If we start OrderStatus activity from Home Activity
         //We will not put any extra, so we just loadOrder by phone from Common
-        //if(getIntent() == null)
+        if(getIntent() == null)
+        {
 
-        //else
-            //loadOrders(getIntent().getStringExtra("userPhone"));
-        loadOrders(Common.currentUser.getUserMobile());
+        }
+        else
+            loadOrders(getIntent().getStringExtra("userPhone"));
+            loadOrders(Common.currentUser.getUserMobile());
 
     }
 

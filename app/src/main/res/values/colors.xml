@@ -8,4 +8,6 @@
     <color name="colorGreen">#32cd32</color>
     <color name="royalBlue">#4169E1</color>
     <color name="dogerblue">#1E90FF</color>
+    <color name="gray">#808080</color>
+    <color name="dark">#454545</color>
 </resources>

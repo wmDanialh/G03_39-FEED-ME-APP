@@ -15,7 +15,7 @@ public class Request {
     public Request() {
     }
 
-    public Request(String paymentState, String name, String phone, String address, String total, String status, List<Order> foods) {
+    public Request(String address, List<Order> foods, String name ,String paymentState,  String phone , String status, String total) {
         this.paymentState = paymentState;
         this.name = name;
         this.phone = phone;
