@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -39,6 +40,8 @@ public class UserProfileActivity extends AppCompatActivity {
     private CircleImageView viewProfilePic;
     private TextView profileName, profileEmail, profilePhone;
 
+    private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,15 +71,23 @@ public class UserProfileActivity extends AppCompatActivity {
         // Button for EditPassword, EditProfile, LogOut
         editProfile=findViewById(R.id.editProfile);
 
-        DatabaseReference databaseReference = firebaseDatabase.getReference("User").child(firebaseAuth.getUid());
+        progressDialog = new ProgressDialog(this);
+
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Users").child(firebaseAuth.getUid());
 
         //Display Profile Pic from Firebase Storage
-        StorageReference mImageRef = FirebaseStorage.getInstance().getReference(firebaseAuth.getUid()).child("Profile Pic");
+        StorageReference mImageRef = FirebaseStorage.getInstance().getReference(firebaseAuth.getUid()).child("User_Profile");
         final long ONE_MEGABYTE = 1024 * 1024;
+
+
 
         mImageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
+
+                progressDialog.setMessage("Loading..");
+                progressDialog.show();
+
                 Bitmap bm = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
                 DisplayMetrics dm = new DisplayMetrics();
                 getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -84,6 +95,8 @@ public class UserProfileActivity extends AppCompatActivity {
                 viewProfilePic.setMinimumHeight(dm.heightPixels);
                 viewProfilePic.setMinimumWidth(dm.widthPixels);
                 viewProfilePic.setImageBitmap(bm);
+
+                progressDialog.dismiss();
 
             }
 

@@ -22,4 +22,13 @@
     <string name="title_activity_user_main2">UserMainActivity2</string>
 
     <string name="Terms_conditions">FEED ME APP T and C</string>
+
+    <string name="termsCondtions">
+    <a href="https://feedmeapptermsandconditions.blogspot.com/2020/09/feed-me-appt-published2020-terms-ofuse.html">Terms and Conditions</a>
+    </string>
+
+    <string name="privacyPolicy">
+    <a href="https://feedmeapptermsandconditions.blogspot.com/2020/09/feed-me-appprivacy-policy-this-privacy.html">Privacy Policy</a>
+    </string>
+
 </resources>

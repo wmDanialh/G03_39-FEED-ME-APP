@@ -46,9 +46,6 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private TextView forgotPassword;
 
-    private FirebaseDatabase FD2;
-    private DatabaseReference DR2;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,53 +68,11 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference table_user = database.getReference("User");
+        final DatabaseReference table_user = database.getReference("Users");
 
-        Login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                final ProgressDialog mDialog = new ProgressDialog(LoginActivity.this);
-                mDialog.setMessage("Please Wait...");
-                mDialog.show();
-
-                table_user.addValueEventListener(new ValueEventListener() {
-
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-
-                        //check if user not exist in database
-                        if(dataSnapshot.child(Email.getText().toString()).exists()) {
-                            //get user information
-                            mDialog.dismiss();
-                            UserProfile user = dataSnapshot.child(Email.getText().toString()).getValue(UserProfile.class);
-                            user.setUserMobile(Email.getText().toString());
-                            if (user.getUserPassword().equals(Password.getText().toString())) {
-                                Intent homeIntent = new Intent(LoginActivity.this, UserMainScreen.class);
-                                Common.currentUser = user;
-                                startActivity(homeIntent);
-                                finish();
-
-                            } else {
-                                Toast.makeText(LoginActivity.this, "Wrong Password !", Toast.LENGTH_SHORT).show();
-                            }
-                        }else{
-                            Toast.makeText(LoginActivity.this, "User not exist in Database !", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-            }
-        });
-
-        /*
         if(user != null){
 
-            if((user.getEmail()).equals("null@gmail.com")){
+            if((user.getEmail()).equals("nursyahiraamira@gmail.com")){
                 finish();
                 startActivity(new Intent(LoginActivity.this, AdminMainScreen.class));
             }else{
@@ -127,14 +82,20 @@ public class LoginActivity extends AppCompatActivity {
 
         }
 
+
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validate(Email.getText().toString(), Password.getText().toString());
+                if(Email.getText().toString().isEmpty() || Password.getText().toString().isEmpty()){
+                    Toast.makeText(LoginActivity.this, "Please enter all the details", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    validate(Email.getText().toString(),Password.getText().toString());
+                }
             }
         });
 
-         */
 
         userSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,57 +107,27 @@ public class LoginActivity extends AppCompatActivity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final EditText resetMail = new EditText(view.getContext());
-
-                AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(view.getContext());
-                passwordResetDialog.setTitle("Reset Password?");
-                passwordResetDialog.setMessage("Enter Your Email To Received Reset Link.");
-                passwordResetDialog.setView(resetMail);
-
-                passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        String mail = resetMail.getText().toString();
-                        firebaseAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                               Toast.makeText(LoginActivity.this, "Reset Link Sent To Your Email", Toast.LENGTH_SHORT).show();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(LoginActivity.this, "Reset Link Sent To Your Email" +e.getMessage(), Toast.LENGTH_SHORT).show();
-
-                            }
-                        });
-                    }
-                });
-
-                passwordResetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
-                });
-
-                passwordResetDialog.create().show();
+                Intent intent = new Intent(LoginActivity.this, UserForgotPasswordActivity.class);
+                startActivity(intent);
             }
         });
+
     }
+
 
     private void validate (String userEmail, String userPassword){
 
         progressDialog.setMessage("Please wait ...");
         progressDialog.show();
 
-        if(userEmail.equals("null@gmail.com")) {
+        if(userEmail.equals("nursyahiraamira@gmail.com")) {
 
             firebaseAuth.signInWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         progressDialog.dismiss();
-                        checkEmailVerification1();
+                        //checkEmailVerification1();
                         Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                         finish();
                         startActivity(new Intent(LoginActivity.this, AdminMainScreen.class));
@@ -212,15 +143,20 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        progressDialog.dismiss();
-                        checkEmailVerification1();
-                        Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                        finish();
-                        startActivity(new Intent(LoginActivity.this, UserMainScreen.class));
-
+                        if(firebaseAuth.getCurrentUser().isEmailVerified()){
+                            progressDialog.dismiss();
+                            Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                            finish();
+                            startActivity(new Intent(LoginActivity.this, UserMainScreen.class));
+                        }
+                        else {
+                            progressDialog.dismiss();
+                            Toast.makeText(LoginActivity.this, "Email is not Verified", Toast.LENGTH_SHORT).show();
+                        }
+                        //checkEmailVerification1();
                     } else {
-                        Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
+                        Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                     }
                 }
             });

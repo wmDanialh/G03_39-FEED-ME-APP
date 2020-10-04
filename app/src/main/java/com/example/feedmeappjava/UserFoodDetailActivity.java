@@ -19,6 +19,7 @@ import com.example.feedmeappjava.Model.Order;
 import com.example.feedmeappjava.Model.Rating;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,6 +43,10 @@ public class UserFoodDetailActivity extends AppCompatActivity implements RatingD
     ElegantNumberButton numberButton;
     RatingBar ratingBar;
 
+    FirebaseAuth firebaseAuth;
+
+    private FirebaseDatabase firebaseDatabase;
+
     Food currentFood;
 
     String foodId="";
@@ -60,7 +65,6 @@ public class UserFoodDetailActivity extends AppCompatActivity implements RatingD
         getSupportActionBar().setTitle("Food Name");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        //toolbar.setTitleTextColor(getResources().getColor(android.R.color.holo_red_dark));
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +77,11 @@ public class UserFoodDetailActivity extends AppCompatActivity implements RatingD
         database = FirebaseDatabase.getInstance();
         foods = database.getReference("Foods");
         ratingTbl = database.getReference("Rating");
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Users").child(firebaseAuth.getUid());
 
         //Init View
         numberButton = (ElegantNumberButton)findViewById(R.id.number_button);
@@ -203,24 +212,24 @@ public class UserFoodDetailActivity extends AppCompatActivity implements RatingD
 
     @Override
     public void onPositiveButtonClicked(int value, String comments) {
-        final Rating rating = new Rating(Common.currentUser.getUserMobile(),
+        final Rating rating = new Rating(firebaseAuth.getCurrentUser().getUid(),
                 foodId,
                 String.valueOf(value),
                 comments);
-        ratingTbl.child(Common.currentUser.getUserMobile()).addValueEventListener(new ValueEventListener() {
+        ratingTbl.child(firebaseAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-                if(datasnapshot.child(Common.currentUser.getUserMobile()).exists())
+                if(datasnapshot.child(firebaseAuth.getCurrentUser().getUid()).exists())
                 {
                     //Remove old value (you can delete or let it be - useless function
-                    ratingTbl.child(Common.currentUser.getUserMobile()).removeValue();
+                    ratingTbl.child(firebaseAuth.getCurrentUser().getUid()).removeValue();
                     //Update new Value
-                    ratingTbl.child(Common.currentUser.getUserMobile()).setValue(rating);
+                    ratingTbl.child(firebaseAuth.getCurrentUser().getUid()).setValue(rating);
                 }
                 else
                 {
                     //Update new Value
-                    ratingTbl.child(Common.currentUser.getUserMobile()).setValue(rating);
+                    ratingTbl.child(firebaseAuth.getCurrentUser().getUid()).setValue(rating);
                 }
                 Toast.makeText(UserFoodDetailActivity.this,"Thank you for submit rating",Toast.LENGTH_SHORT).show();
             }

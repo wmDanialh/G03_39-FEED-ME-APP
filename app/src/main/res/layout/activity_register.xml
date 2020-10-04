@@ -8,7 +8,7 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/background_image_one_signup"
+        android:src="@drawable/register"
         android:scaleType="centerCrop"/>
 
     <TextView
@@ -20,6 +20,7 @@
         android:text="Welcome You!"
         android:textColor="@android:color/white"
         android:textSize="30sp"
+        android:fontFamily="@font/amiko_bold"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.151"
@@ -32,91 +33,121 @@
         android:orientation="vertical"
         android:gravity="bottom">
 
-        <EditText
-            android:id="@+id/etUserName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_person"
-            android:layout_marginStart="30dp"
-            android:backgroundTint="@android:color/transparent"
-            android:layout_marginEnd="30dp"
-            android:hint="Full Name"
-            android:inputType="textEmailAddress"
-            android:padding="15dp"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white" />
 
-        <RelativeLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="30dp"
-            android:background="#B1B1B1" />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:theme="@style/beforeLogin"
+            app:boxStrokeColor="@color/colorWhite"
+            app:boxStrokeErrorColor="@color/colorWhite"
+            app:startIconTint="@color/colorWhite"
+            app:startIconDrawable="@drawable/white_person"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:id="@+id/etUserEmail"
-            android:hint="Email"
-            android:backgroundTint="@android:color/transparent"
-            android:drawableLeft="@drawable/ic_email"
-            android:inputType="textEmailAddress"
-            android:padding="15dp"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white" />
+            android:backgroundTint="@color/fui_transparent"
+            android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="30dp"
-            android:background="#B1B1B1" />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/etUserPassword"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:drawableLeft="@drawable/ic_lock"
-            android:hint="Password"
-            android:backgroundTint="@android:color/transparent"
-            android:inputType="textPassword"
-            android:padding="15dp"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white" />
+            <EditText
+                android:id="@+id/etUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:backgroundTint="@android:color/transparent"
+                android:hint="Full Name"
+                android:drawablePadding="20dp"
+                android:inputType="textPersonName"
+                android:padding="15dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="30dp"
-            android:background="#B1B1B1" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/etUserMobile"
+            android:theme="@style/beforeLogin"
+            app:boxStrokeColor="@color/colorWhite"
+            app:boxStrokeErrorColor="@color/colorWhite"
+            app:startIconTint="@color/colorWhite"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:drawableLeft="@drawable/ic_phone"
-            android:hint="Mobile Number"
-            android:backgroundTint="@android:color/transparent"
-            android:inputType="number"
-            android:padding="15dp"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white" />
+            app:startIconDrawable="@drawable/ic_email"
+            android:backgroundTint="@color/fui_transparent"
+            android:layout_height="wrap_content">
 
-        <RelativeLayout
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etUserEmail"
+                android:fontFamily="@font/montserrat"
+                android:hint="Email"
+                android:drawablePadding="20dp"
+                android:backgroundTint="@android:color/transparent"
+                android:inputType="textEmailAddress"
+                android:padding="15dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            app:startIconDrawable="@drawable/white_lock"
+            android:id="@+id/newPassLayout"
+            android:theme="@style/beforeLogin"
+            app:boxStrokeColor="@color/colorWhite"
+            app:startIconTint="@color/colorWhite"
+            app:passwordToggleTint="@color/colorWhite"
+            app:passwordToggleEnabled="true"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="4dp"
             android:layout_marginEnd="30dp"
-            android:background="#B1B1B1" />
+            app:boxStrokeErrorColor="@color/colorWhite"
+            android:backgroundTint="@color/fui_transparent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etUserPassword"
+                android:drawableLeft="@drawable/ic_lock"
+                android:hint="Password"
+                android:drawablePadding="20dp"
+                android:backgroundTint="@android:color/transparent"
+                android:inputType="textPassword"
+                android:fontFamily="@font/montserrat"
+                android:padding="15dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginBottom="30dp"
+            android:layout_width="match_parent"
+            android:theme="@style/beforeLogin"
+            app:boxStrokeColor="@color/colorWhite"
+            app:boxStrokeErrorColor="@color/colorWhite"
+            app:startIconTint="@color/colorWhite"
+            app:startIconDrawable="@drawable/ic_phone"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/fui_transparent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etUserMobile"
+                android:drawablePadding="20dp"
+                android:hint="Mobile Number"
+                android:backgroundTint="@android:color/transparent"
+                android:inputType="phone"
+                android:padding="15dp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -129,15 +160,14 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerInParent="true"
-                android:textColor="@color/colorWhite"
-                android:src="@drawable/round_arrow_forward_24"
+                android:src="@drawable/black_arrow"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="30dp"
-                android:tint="@android:color/white"
-                android:layout_marginBottom="5dp"
+                android:background="@android:color/white"
+                android:layout_marginBottom="20dp"
+                app:backgroundTint="@color/colorWhite"
                 android:elevation="0dp"
                 app:elevation="0dp"
-                android:backgroundTint="#4E525B"
                 app:fabCustomSize="80dp"
                 tools:ignore="RelativeOverlap" />
 
@@ -150,6 +180,7 @@
                 android:layout_marginStart="30dp"
                 android:padding="15dp"
                 android:text="Sign up"
+                android:fontFamily="@font/montserrat"
                 android:textColor="@android:color/white"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -158,7 +189,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="50dp"
             android:layout_marginTop="20dp">
 
             <TextView
@@ -170,6 +201,7 @@
                 android:id="@+id/tvUserLogin"
                 android:padding="15dp"
                 android:text="Sign in"
+                android:fontFamily="@font/basic"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />

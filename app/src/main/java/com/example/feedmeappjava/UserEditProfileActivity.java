@@ -18,8 +18,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.feedmeappjava.Model.UserProfile;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -52,8 +54,6 @@ public class UserEditProfileActivity extends AppCompatActivity {
 
     Uri imagePath;
 
-    String newName, newEmail, newMobile, newImage;
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == PICK_IMAGE && resultCode == RESULT_OK && data.getData() != null){
@@ -85,7 +85,6 @@ public class UserEditProfileActivity extends AppCompatActivity {
                onBackPressed();
             }
         });
-        //toolbar.setTitleTextColor(getResources().getColor(android.R.color.holo_red_dark));
 
         newUserName = (EditText)findViewById(R.id.editProfileName);
         newUserEmail = (EditText)findViewById(R.id.editEmail);
@@ -93,6 +92,7 @@ public class UserEditProfileActivity extends AppCompatActivity {
         newUserMobile = (EditText)findViewById(R.id.editMobile);
         save = (Button)findViewById(R.id.btnSave);
         profilePic = (CircleImageView) findViewById(R.id.imgUserEditProfile);
+
         progressDialog = new ProgressDialog(this);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -100,11 +100,14 @@ public class UserEditProfileActivity extends AppCompatActivity {
         firebaseStorage = FirebaseStorage.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        final DatabaseReference databaseReference = firebaseDatabase.getReference("User").child(firebaseAuth.getUid());
+        final DatabaseReference databaseReference = firebaseDatabase.getReference("Users").child(firebaseAuth.getUid());
 
         storageReference = firebaseStorage.getReference();
 
-        StorageReference mImageRef = FirebaseStorage.getInstance().getReference(firebaseAuth.getUid()).child("Profile Pic");
+
+        //Display Image from Firebase Storage
+        StorageReference mImageRef = FirebaseStorage.getInstance().getReference(firebaseAuth.getUid()).child("User_Profile");
+
         final long ONE_MEGABYTE = 1024 * 1024;
 
         mImageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
@@ -137,6 +140,7 @@ public class UserEditProfileActivity extends AppCompatActivity {
             }
         });
 
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -157,6 +161,7 @@ public class UserEditProfileActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String name = newUserName.getText().toString();
                 String email = newUserEmail.getText().toString();
                 String mobile = newUserMobile.getText().toString();
@@ -164,25 +169,10 @@ public class UserEditProfileActivity extends AppCompatActivity {
                 progressDialog.setMessage("Profile Pic is uploading..");
                 progressDialog.show();
 
-                UserProfile userProfile = new UserProfile(name, email, mobile);
+                UserProfile userProfile = new UserProfile(mobile,name,email);
                 databaseReference.setValue(userProfile);
 
-                /*String userEmailNew = newUserEmail.getText().toString();
-
-                firebaseUser.updateEmail(userEmailNew).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(UserEditProfileActivity.this,"Email Update Failed", Toast.LENGTH_SHORT).show();
-                            sendEmailVerification();
-                            //finish();
-                        }else{
-                            Toast.makeText(UserEditProfileActivity.this,"Email Update ", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });*/
-
-                StorageReference imageReference = storageReference.child(firebaseAuth.getUid()).child("Profile Pic");
+                StorageReference imageReference = storageReference.child(firebaseAuth.getUid()).child("User_Profile");
                 UploadTask uploadTask = imageReference.putFile(imagePath);
 
                 uploadTask.addOnFailureListener(new OnFailureListener() {
@@ -196,7 +186,7 @@ public class UserEditProfileActivity extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         progressDialog.dismiss();
                         Toast.makeText(UserEditProfileActivity.this,"Upload Successful", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(UserEditProfileActivity.this, UserProfileActivity.class));
+                        startActivity(new Intent(UserEditProfileActivity.this, UserMainScreen.class));
                         finish();
                     }
                 });
@@ -205,24 +195,4 @@ public class UserEditProfileActivity extends AppCompatActivity {
         });
 
     }
-
-    /*private void sendEmailVerification(){
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        if(firebaseUser != null){
-            firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        //Toast.makeText(EditProfile.this, "Email Update, Verification Email is being sent!", Toast.LENGTH_SHORT).show();
-                        //firebaseAuth.signOut();
-                        //finish();
-                        //startActivity(new Intent(EditProfile.this, MainActivity.class));
-                    }else{
-                        //Toast.makeText(EditProfile.this, "Verification Email hasn't been sent!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        }
-    }*/
-
 }

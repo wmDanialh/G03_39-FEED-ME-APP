@@ -5,19 +5,14 @@ public class UserProfile {
     public String userMobile;
     public String userName;
     public String userEmail;
-    public String userPassword;
 
-    public UserProfile(String userMobile, String userName, String userEmail, String userPassword) {
+    public UserProfile(String userMobile, String userName, String userEmail) {
         this.userMobile = userMobile;
         this.userName = userName;
         this.userEmail = userEmail;
-        this.userPassword = userPassword;
     }
 
     public UserProfile() {
-    }
-
-    public UserProfile(String name, String email, String mobile) {
     }
 
 
@@ -45,11 +40,4 @@ public class UserProfile {
         this.userEmail = userEmail;
     }
 
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
 }

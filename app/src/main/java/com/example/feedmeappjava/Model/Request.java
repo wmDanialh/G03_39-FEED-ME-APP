@@ -11,11 +11,12 @@ public class Request {
     private String total;
     private String status;
     private List<Order> foods; // list of food order
+    private String comment;
 
     public Request() {
     }
 
-    public Request(String address, List<Order> foods, String name ,String paymentState,  String phone , String status, String total) {
+    public Request(String address, List<Order> foods, String name ,String paymentState,  String phone , String status, String total, String comment) {
         this.paymentState = paymentState;
         this.name = name;
         this.phone = phone;
@@ -23,6 +24,15 @@ public class Request {
         this.total = total;
         this.status = "0";
         this.foods = foods;
+        this.comment = comment;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public String getPaymentState() {

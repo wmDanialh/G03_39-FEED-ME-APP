@@ -14,10 +14,13 @@
         android:roundIcon="@drawable/delivery"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".UserForgotPasswordActivity"></activity>
+        <activity android:name=".UserOrderFoodDetailActivity" />
+
         <service
             android:name=".Services.ListenOrder"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
         <activity android:name=".UserAddAddressActivity" />
         <activity android:name=".UserOrderStatusActivity" />

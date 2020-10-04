@@ -9,7 +9,7 @@
     app:cardElevation="4dp"
     android:layout_height="wrap_content">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="16dp"
@@ -19,107 +19,189 @@
         android:layout_gravity="center_vertical"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/confirm"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CONFIRMED"
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat"
+            android:textColor="#000"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FeedMe App Receipt"
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/confirm"
+            android:textColor="#000"
+            android:id="@+id/receipt"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/receipt"
+            android:fontFamily="@font/montserrat"
+            android:id="@+id/adminAddressForRef"
+            android:text="A-11, Jalan Tun Ismail 2, 25000 Kuantan, Pahang"
+            android:textColor="#000"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+6014-702 3124"
+            android:fontFamily="@font/montserrat"
+            android:id="@+id/adminNumberForRef"
+            android:layout_below="@+id/adminAddressForRef"
+            android:textColor="#000"
+            android:textSize="15sp"/>
+        <TextView
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="9"
-            android:orientation="vertical">
+            android:id="@+id/adminEmailForReference"
+            android:layout_below="@+id/adminNumberForRef"
+            android:fontFamily="@font/montserrat"
+            android:text="wanmohddanialhakim@gmail.com"
+            android:textColor="#000"
+            android:textSize="15sp"/>
+
+        <LinearLayout
+            android:id="@+id/l1"
+            android:layout_below="@+id/adminEmailForReference"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="FeedMe App Receipt"
-                android:textStyle="bold"
-                android:textColor="#000"
-                android:textSize="15sp"/>
-
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="A-11, Jalan Tun Ismail 2, 25000 Kuantan, Pahang"
-                android:textColor="#000"
-                android:textSize="15sp"/>
-
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+6014-702 3124"
-                android:textColor="#000"
-                android:textSize="15sp"/>
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="wanmohddanialhakim@gmail.com"
+                android:text="ORDER SHIPPED ID : "
+                android:id="@+id/order_shipped"
+                android:gravity="center_vertical|start"
                 android:textColor="#000"
                 android:textSize="15sp"/>
 
             <TextView
                 android:id="@+id/order_id"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical|start"
                 android:textAllCaps="true"
                 android:textStyle="bold"
                 android:text="#11111"
-                android:layout_width="wrap_content"
-                android:textColor="#000"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:id="@+id/order_status"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical|start"
-                android:textAllCaps="true"
-                android:textStyle="italic"
-                android:text="Status"
-                android:layout_width="wrap_content"
-                android:textColor="#000"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:id="@+id/order_phone"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical|start"
-                android:textAllCaps="true"
-                android:textStyle="italic"
-                android:text="0139035514"
-                android:layout_width="wrap_content"
-                android:textColor="#000"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:id="@+id/order_address"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical|start"
-                android:textAllCaps="true"
-                android:textStyle="italic"
-                android:text="ADDRESS"
-                android:textColor="#000"
+                android:textSize="15sp"
+                android:fontFamily="@font/basic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center_vertical|end"
-            android:layout_marginRight="16dp"
-            android:id="@+id/cart_item_count"/>
+        <LinearLayout
+            android:layout_below="@+id/l1"
+            android:id="@+id/l2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FOOD STATUS : "
+                android:id="@+id/status"
+                android:fontFamily="@font/basic"
+                android:textColor="#000"
+                android:gravity="center_vertical|start"
+                android:textSize="15sp"/>
 
+            <TextView
+                android:layout_toRightOf="@+id/status"
+                android:id="@+id/order_status"
+                android:gravity="center_vertical|start"
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                android:text="Status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-    </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_below="@+id/l2"
+            android:id="@+id/l3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TELEPHONE NO : "
+                android:id="@+id/tele"
+                android:textColor="#000"
+                android:fontFamily="@font/basic"
+                android:gravity="center_vertical|start"
+                android:textSize="15sp"/>
+            <TextView
+                android:layout_toRightOf="@+id/tele"
+                android:id="@+id/order_phone"
+                android:gravity="center_vertical|end"
+                android:textAllCaps="true"
+                android:fontFamily="@font/basic"
+                android:textSize="18sp"
+                android:text="0139035514"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_below="@+id/l3"
+            android:id="@+id/l4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/addressText"
+                android:gravity="center_vertical|end"
+                android:fontFamily="@font/basic"
+                android:textSize="15sp"
+                android:text="YOUR ADDRESS : "
+                android:textColor="#000"
+                android:textAllCaps="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_below="@+id/addressText"
+                android:id="@+id/order_address"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical|start"
+                android:textAllCaps="true"
+                android:text="ADDRESS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

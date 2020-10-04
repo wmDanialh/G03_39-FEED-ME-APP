@@ -18,29 +18,118 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorWhite" />
+            android:background="@color/colorWhite" >
+
+        </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
 
-    <WebView
-        android:id="@+id/wbeYoutube"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="10dp"
+    <RelativeLayout
+        android:layout_below="@id/appBar"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_below="@+id/appBar"/>
+        android:layout_marginTop="10dp"
+        android:background="#fff"
+        android:id="@+id/rl0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <WebView
-        android:id="@+id/wbe"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
+        <TextView
+            android:id="@+id/textview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/basic"
+            android:text="Welcome "
+            android:textColor="#000"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/userMainScreenName"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textSize="27sp"
+            android:fontFamily="@font/basic"
+            android:textColor="#000"
+            android:layout_below="@+id/textview1"
+            android:text="User"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@id/rl0"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#fff"
+        android:id="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textFlip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/basic"
+            android:text="Our Best Deals "
+            android:textColor="#000"
+            android:textSize="18sp" />
+
+        <ViewFlipper
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@color/colorWhite"
+            android:id="@+id/viewFlipper"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/textFlip"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@id/rl1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_below="@+id/wbeYoutube"/>
+        android:background="#fff"
+        android:id="@+id/rl2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/basic"
+            android:text="Check us on "
+            android:textColor="#000"
+            android:textSize="18sp" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/viewPager"
+            android:layout_below="@+id/textCheck"
+            android:overScrollMode="never"
+            android:clipToPadding="false"/>
+
+    </RelativeLayout>
+
+
+
+
+
 
 </RelativeLayout>
