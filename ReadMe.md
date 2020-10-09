@@ -15,4 +15,6 @@ FeedMe Application Java Version (USER)
 
 	2.	Link of the Source Code - https://github.com/wmDanialh/G03_39-FEED-ME-APP.git
 
-	3.	
+	3.	Username and Password - email: feedmeappjava@gmail.com 	Password:user123
+
+	4.	Username and Password used for database (firebase) - email: feedmeappjava@gmail.com  Password: FeedMeApp123
